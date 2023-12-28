@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: default
+data:
+  mapUsers: |
+    - userarn: arn:aws:iam::101478099523:root
+      username: root
+      groups:
+        - system:masters
