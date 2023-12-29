@@ -1,4 +1,5 @@
 package br.com.appfastfood.produto.aplicacao.adaptadores.requisicao;
+
 public class RequisicaoExcecao {
 
 

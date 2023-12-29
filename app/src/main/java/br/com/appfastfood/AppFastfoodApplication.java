@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @OpenAPIDefinition(info = @Info(
 		title = "API - Produção",
 		version = "0.0.1-SNAPSHOT",
-		description = "Seja bem vindo(a) a especificação da API de Produção! Aqui há funcionalidade relacionada a área de Produção"
+		description = "Seja bem vindo(a) a especificação da API de Produção! Aqui há funcionalidades relacionadas a serviço de Produção"
 ))
 public class AppFastfoodApplication {
 	public static void main(String[] args) {

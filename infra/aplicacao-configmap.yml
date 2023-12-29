@@ -3,6 +3,7 @@ kind: ConfigMap
 metadata:
   name: appfastfood-configmap
 data:
-  SPRING_PROFILES_ACTIVE: DEV
-  SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/appfastfood
+
+  MONGODB_HOST: "fastfood-docdb2-cluster.cluster-c4bgv5fkmppp.us-east-1.docdb.amazonaws.com"
+  MONGODB_DATABASE: "appfastfood"
   JAVA_TOOL_OPTIONS: "-agentlib:jdwp=transport=dt_socket,address=*:5005,server=y,suspend=n"
