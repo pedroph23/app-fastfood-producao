@@ -1,6 +1,9 @@
 package br.com.appfastfood.configuracoes;
 
 import br.com.appfastfood.AppFastfoodApplication;
+import br.com.appfastfood.carrinho.dominio.repositorios.CarrinhoRepositorio;
+import br.com.appfastfood.carrinho.usecase.adaptadores.CarrinhoServicoImpl;
+import br.com.appfastfood.carrinho.usecase.portas.CarrinhoServico;
 import br.com.appfastfood.configuracoes.logs.Log;
 import br.com.appfastfood.configuracoes.logs.Log4jLog;
 import br.com.appfastfood.produto.dominio.repositorios.ProdutoRepositorio;
@@ -19,6 +22,11 @@ public class BeanConfiguration {
     ProdutoServico produtoServico(ProdutoRepositorio produtoRepositorio){
         return new ProdutoServicoImpl(produtoRepositorio);
     }
+    @Bean
+    CarrinhoServico carrinhoServico(CarrinhoRepositorio carrinhoRepositorio, ProdutoServico produtoServico){
+        return new CarrinhoServicoImpl(carrinhoRepositorio, produtoServico);
+    }
+
 
     @Bean
     Log log(){

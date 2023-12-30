@@ -1,4 +1,4 @@
-package br.com.appfastfood.produto.aplicacao.adaptadores.requisicao;
+package br.com.appfastfood.carrinho.aplicacao.adaptadores.resposta;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -7,7 +7,9 @@ import lombok.Getter;
 @Builder()
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ProdutoRequisicao {
+public class ProdutoResposta {
+    @JsonProperty("id")
+    private String id;
 
     @JsonProperty("nome")
     private String nome;

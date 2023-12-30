@@ -22,6 +22,16 @@ public class Produto {
         this.categoria = categoria;
         this.descricao = descricao;
     }
+
+    public Produto(Nome nome, Preco preco, UriImagem uriImagem, CategoriaEnum categoria, Descricao descricao) {
+        this.validarCampos(nome, preco, uriImagem, categoria, descricao);
+        this.nome = nome;
+        this.preco = preco;
+        this.uriImagem = uriImagem;
+        this.categoria = categoria;
+        this.descricao = descricao;
+    }
+
     private void validarCampos(Nome nome, Preco preco, UriImagem uriImagem, CategoriaEnum categoria, Descricao descricao) {
         if(Validacoes.validaCamposVaziosOuNulos(nome, preco, uriImagem, categoria, descricao)){
             throw new BadRequestException(ExceptionsMessages.CAMPOS_OBRIGATORIOS.getValue());

@@ -6,14 +6,9 @@ import br.com.appfastfood.produto.dominio.repositorios.ProdutoRepositorio;
 import br.com.appfastfood.produto.dominio.vo.*;
 import br.com.appfastfood.produto.dominio.vo.enums.CategoriaEnum;
 import br.com.appfastfood.produto.exceptions.ExceptionsMessages;
-import br.com.appfastfood.produto.infraestrutura.entidades.CustomSequence;
 import br.com.appfastfood.produto.infraestrutura.entidades.ProdutoEntidade;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -22,8 +17,6 @@ import java.util.Optional;
 
 @Component
 public class ProdutoRepositorioImpl implements ProdutoRepositorio {
-    @Autowired
-    private MongoTemplate mongoTemplate;
     private final SpringDataProdutoRepository springDataProdutoRepository;
     public ProdutoRepositorioImpl(SpringDataProdutoRepository springDataProdutoRepository) {
         this.springDataProdutoRepository = springDataProdutoRepository;
@@ -32,7 +25,6 @@ public class ProdutoRepositorioImpl implements ProdutoRepositorio {
     @Override
     public void cadastrar(Produto produto) {
         ProdutoEntidade produtoSalvo = new ProdutoEntidade(
-                generateNextId("product"),
                 produto.getNome().getNome(),
                 produto.getPreco().getPreco(),
                 produto.getUriImagem().getUriImagem(),
@@ -45,13 +37,12 @@ public class ProdutoRepositorioImpl implements ProdutoRepositorio {
 
     @Override
     public void remover(Long id) {
-        this.springDataProdutoRepository.deleteById(id); 
+        this.springDataProdutoRepository.deleteById(id);
     }
 
     @Override
     public Produto atualizar(Long id, Produto produto) {
-        ProdutoEntidade produtoSalvo = new ProdutoEntidade(
-                id,
+            ProdutoEntidade produtoSalvo = new ProdutoEntidade(
                 produto.getNome().getNome(),
                 produto.getPreco().getPreco(),
                 produto.getUriImagem().getUriImagem(),
@@ -79,7 +70,6 @@ public class ProdutoRepositorioImpl implements ProdutoRepositorio {
             produtoEntidadeCategoria = this.springDataProdutoRepository.findProdutoEntidadeByCategoria(categoria);
         }
         
-
             if(produtoEntidadeCategoria.isPresent() && !produtoEntidadeCategoria.get().isEmpty()) {
                 produtoEntidadeCategoria.get().forEach(produtoEntidade -> {
                     Produto produto = new Produto(
@@ -113,15 +103,5 @@ public class ProdutoRepositorioImpl implements ProdutoRepositorio {
                                     new Categoria(produtoBusca.getCategoria()).getCategoria(), 
                                     new Descricao(produtoBusca.getDescricao()));
         return produtoRetorno;
-    }
-
-    public Long generateNextId(String collectionName) {
-        Query query = new Query(Criteria.where("_id").is(collectionName));
-        Update update = new Update().inc("sequence", 1);
-        FindAndModifyOptions options = new FindAndModifyOptions().returnNew(true).upsert(true);
-
-        CustomSequence sequence = mongoTemplate.findAndModify(query, update, options, CustomSequence.class);
-
-        return sequence.getSequence();
     }
 }

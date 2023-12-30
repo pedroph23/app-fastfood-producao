@@ -19,13 +19,14 @@ public class ProdutoRepositorioImplTest {
 
     @Mock
     private SpringDataProdutoRepository springDataProdutoRepository;
-
+    @Mock
+    private SpringDataProdutoRepository jpaSpringDataProdutoRepository;
     private ProdutoRepositorio produtoRepositorio;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        produtoRepositorio = new ProdutoRepositorioImpl(springDataProdutoRepository);
+        produtoRepositorio = new ProdutoRepositorioImpl(jpaSpringDataProdutoRepository);
     }
 
     @Test
@@ -37,7 +38,7 @@ public class ProdutoRepositorioImplTest {
         List<ProdutoEntidade> produtoEntidades = new ArrayList<>();
         produtoEntidades.add(new ProdutoEntidade("Produto 1", 10.0D, "http://localhost:8080", "lanche", "Descrição do produto 1"));
         produtoEntidades.add(new ProdutoEntidade("Produto 2", 20.0D, "http://localhost:8080", "lanche", "Descrição do produto 2"));
-        Mockito.when(springDataProdutoRepository.findProdutoEntidadeByCategoria(categoria))
+        Mockito.when(jpaSpringDataProdutoRepository.findProdutoEntidadeByCategoria(categoria))
                 .thenReturn(Optional.of(produtoEntidades));
 
         // Execução do método a ser testado

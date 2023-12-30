@@ -1,11 +1,14 @@
 package br.com.appfastfood.produto.infraestrutura.entidades;
 
 
-import org.springframework.data.mongodb.core.mapping.Document;
+import jakarta.persistence.*;
 
-@Document(value = "produto")
+@Entity(name = "produto")
 public class ProdutoEntidade {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "produto_id_seq")
+    @SequenceGenerator(name = "produto_id_seq", sequenceName = "produto_id_seq", allocationSize = 1)
     private Long id;
     protected ProdutoEntidade() {}
     private String nome;

@@ -46,7 +46,6 @@ public class ProdutoController {
     public ResponseEntity cadastrar(@RequestBody ProdutoRequisicao produtoRequisicao){
 
         Produto produto = new Produto(
-                    produtoRequisicao.getId(),
                     new Nome(produtoRequisicao.getNome()),
                     new Preco(produtoRequisicao.getPreco()),
                     new UriImagem(produtoRequisicao.getUriImagem()),
@@ -92,7 +91,6 @@ public class ProdutoController {
     public ResponseEntity atualizar(@PathVariable("id") Long id, @RequestBody ProdutoRequisicao produtoRequisicao){
 
             Produto produto = new Produto(
-                    produtoRequisicao.getId(),
                     new Nome(produtoRequisicao.getNome()),
                     new Preco(produtoRequisicao.getPreco()),
                     new UriImagem(produtoRequisicao.getUriImagem()),
