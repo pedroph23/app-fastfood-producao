@@ -1,5 +1,6 @@
 package br.com.appfastfood.carrinho.dominio.modelos;
 
+import br.com.appfastfood.carrinho.dominio.modelos.enums.StatusCarrinhoEnum;
 import br.com.appfastfood.carrinho.dominio.vo.ProdutoVO;
 import ch.qos.logback.core.net.server.Client;
 
@@ -10,6 +11,28 @@ public class Carrinho {
     private List<ProdutoVO> produtoVOS;
     private Cliente cliente;
     private Double valorTotal;
+    private StatusCarrinhoEnum status;
+
+    public Carrinho(List<ProdutoVO> produtoVOS, Cliente cliente, Double valorTotal, StatusCarrinhoEnum status) {
+        this.produtoVOS = produtoVOS;
+        this.cliente = cliente;
+        this.valorTotal = valorTotal;
+        this.status = status;
+    }
+
+    public Carrinho(List<ProdutoVO> produtoVOS, Cliente cliente, StatusCarrinhoEnum status) {
+        this.produtoVOS = produtoVOS;
+        this.cliente = cliente;
+        this.status = status;
+    }
+
+    public Carrinho(Long id, List<ProdutoVO> produtoVOS, Cliente cliente, Double valorTotal, StatusCarrinhoEnum status) {
+        this.id = id;
+        this.produtoVOS = produtoVOS;
+        this.cliente = cliente;
+        this.valorTotal = valorTotal;
+        this.status = status;
+    }
 
     public Carrinho(List<ProdutoVO> produtoVOS, Cliente cliente, Double valorTotal) {
         this.produtoVOS = produtoVOS;
@@ -17,16 +40,12 @@ public class Carrinho {
         this.valorTotal = valorTotal;
     }
 
-    public Carrinho(List<ProdutoVO> produtoVOS, Cliente cliente) {
-        this.produtoVOS = produtoVOS;
-        this.cliente = cliente;
+    public StatusCarrinhoEnum getStatus() {
+        return status;
     }
 
-    public Carrinho(Long id, List<ProdutoVO> produtoVOS, Cliente cliente, Double valorTotal) {
-        this.id = id;
-        this.produtoVOS = produtoVOS;
-        this.cliente = cliente;
-        this.valorTotal = valorTotal;
+    public void setStatus(StatusCarrinhoEnum status) {
+        this.status = status;
     }
 
     public Long getId() {
@@ -60,4 +79,6 @@ public class Carrinho {
     public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
     }
+
+
 }

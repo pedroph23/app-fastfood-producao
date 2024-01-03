@@ -7,8 +7,6 @@ import br.com.appfastfood.produto.dominio.vo.*;
 import br.com.appfastfood.produto.dominio.vo.enums.CategoriaEnum;
 import br.com.appfastfood.produto.exceptions.ExceptionsMessages;
 import br.com.appfastfood.produto.infraestrutura.entidades.ProdutoEntidade;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

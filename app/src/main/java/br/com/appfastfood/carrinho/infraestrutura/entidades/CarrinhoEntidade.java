@@ -19,11 +19,21 @@ public class CarrinhoEntidade {
     List<ProdEnt> produtos;
     private String clienteId;
     private Double valorTotal;
+    private String status;
 
-    public CarrinhoEntidade(List<ProdEnt> produtos, String clienteId, Double valorTotal) {
+    public CarrinhoEntidade(Long id, List<ProdEnt> produtos, String clienteId, Double valorTotal, String status) {
+        this.id = id;
         this.produtos = produtos;
         this.clienteId = clienteId;
         this.valorTotal = valorTotal;
+        this.status = status;
+    }
+
+    public CarrinhoEntidade(List<ProdEnt> produtos, String clienteId, Double valorTotal, String status) {
+        this.produtos = produtos;
+        this.clienteId = clienteId;
+        this.valorTotal = valorTotal;
+        this.status = status;
     }
 
     public CarrinhoEntidade(Long id, List<ProdEnt> produtos, String clienteId, Double valorTotal) {
@@ -31,6 +41,14 @@ public class CarrinhoEntidade {
         this.produtos = produtos;
         this.clienteId = clienteId;
         this.valorTotal = valorTotal;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Long getId() {

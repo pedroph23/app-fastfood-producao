@@ -4,6 +4,7 @@ import br.com.appfastfood.carrinho.aplicacao.adaptadores.requisicao.CarrinhoRequ
 import br.com.appfastfood.carrinho.aplicacao.adaptadores.requisicao.ProdutosReq;
 import br.com.appfastfood.carrinho.dominio.modelos.Carrinho;
 import br.com.appfastfood.carrinho.dominio.modelos.Cliente;
+import br.com.appfastfood.carrinho.dominio.modelos.enums.StatusCarrinhoEnum;
 import br.com.appfastfood.carrinho.dominio.repositorios.CarrinhoRepositorio;
 import br.com.appfastfood.carrinho.dominio.vo.ProdutoVO;
 import br.com.appfastfood.carrinho.exceptions.ExceptionsMessages;
@@ -43,7 +44,7 @@ public class CarrinhoServicoImpl implements CarrinhoServico {
             produtosVO.add(produtoVO);
         }
 
-        Carrinho carrinho = new Carrinho(produtosVO, new Cliente(carrinhoRequisicao.getIdCliente()), valorTotal);
+        Carrinho carrinho = new Carrinho(produtosVO, new Cliente(carrinhoRequisicao.getIdCliente()), valorTotal, StatusCarrinhoEnum.ABERTO);
 
         this.carrinhoRepositorio.criar(carrinho);
     }
@@ -61,7 +62,7 @@ public class CarrinhoServicoImpl implements CarrinhoServico {
 
         List<Carrinho> carrinhoList = carrinhoEntidades.stream().map(carrinhoEntidade -> {
             List<ProdutoVO> produtosVO = carrinhoEntidade.getProdutos().stream().map(prodEnt -> new ProdutoVO(prodEnt.getIdProduto(), prodEnt.getQuantidadeProduto())).toList();
-            return new Carrinho(carrinhoEntidade.getId(), produtosVO, new Cliente(carrinhoEntidade.getClienteId()), carrinhoEntidade.getValorTotal());
+            return new Carrinho(carrinhoEntidade.getId(), produtosVO, new Cliente(carrinhoEntidade.getClienteId()), carrinhoEntidade.getValorTotal(), StatusCarrinhoEnum.buscaEnumPorStatusString(carrinhoEntidade.getStatus()));
         }).toList();
 
         return carrinhoList;

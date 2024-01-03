@@ -3,6 +3,7 @@ package br.com.appfastfood.carrinho.infraestrutura;
 
 import br.com.appfastfood.carrinho.dominio.modelos.Carrinho;
 import br.com.appfastfood.carrinho.dominio.modelos.Cliente;
+import br.com.appfastfood.carrinho.dominio.modelos.enums.StatusCarrinhoEnum;
 import br.com.appfastfood.carrinho.dominio.repositorios.CarrinhoRepositorio;
 import br.com.appfastfood.carrinho.dominio.vo.ProdutoVO;
 import br.com.appfastfood.carrinho.infraestrutura.entidades.CarrinhoEntidade;
@@ -31,7 +32,7 @@ public class CarrinhoRepositorioImpl implements CarrinhoRepositorio {
             produtosEntidade.add(new ProdEnt(produto.getIdProduto(), produto.getQuantidadeProduto()));
         });
 
-        CarrinhoEntidade carrinhoEntidade = new CarrinhoEntidade(produtosEntidade, carrinho.getCliente().getCliente(), carrinho.getValorTotal());
+        CarrinhoEntidade carrinhoEntidade = new CarrinhoEntidade(produtosEntidade, carrinho.getCliente().getCliente(), carrinho.getValorTotal(), StatusCarrinhoEnum.retornaNomeEnum(carrinho.getStatus()));
 
         springDataCarrinhoRepository.save(carrinhoEntidade);
     }
@@ -58,7 +59,8 @@ public class CarrinhoRepositorioImpl implements CarrinhoRepositorio {
         Carrinho carrinho = new Carrinho(
                 produtos,
                 new Cliente(carrinhoEntidadeResult.getClienteId()),
-                carrinhoEntidadeResult.getValorTotal()
+                carrinhoEntidadeResult.getValorTotal(),
+                StatusCarrinhoEnum.buscaEnumPorStatusString(carrinhoEntidadeResult.getStatus())
         );
         return carrinho;
     }

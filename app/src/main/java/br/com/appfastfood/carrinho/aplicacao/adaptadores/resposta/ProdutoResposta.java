@@ -25,4 +25,5 @@ public class ProdutoResposta {
 
     @JsonProperty("descricao")
     private String descricao;
+
 }

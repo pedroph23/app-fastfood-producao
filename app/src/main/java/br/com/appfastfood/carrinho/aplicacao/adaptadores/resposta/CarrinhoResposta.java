@@ -24,13 +24,10 @@ public class CarrinhoResposta {
     @JsonProperty("valor_total")
     private Double valorTotal;
 
-    public CarrinhoResposta(List<ProdutosReq> produtos,
-                            String idCliente,
-                            Double valorTotal){
+
+    public CarrinhoResposta(List<ProdutosReq> produtos, String idCliente, Double valorTotal) {
+        this.produtos = produtos;
         this.idCliente = idCliente;
         this.valorTotal = valorTotal;
-        this.produtos = produtos;
     }
-
-
 }

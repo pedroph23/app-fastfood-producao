@@ -83,7 +83,7 @@ public class CarrinhoController {
                             .quantidadeProduto(produtoVO.getQuantidadeProduto())
                             .build()
                     ).toList();
-            return new CarrinhoListadoResposta(carrinho.getId(), produtosReqs, carrinho.getCliente().getCliente(), carrinho.getValorTotal());
+            return new CarrinhoListadoResposta(carrinho.getId(), produtosReqs, carrinho.getCliente().getCliente(), carrinho.getValorTotal(), carrinho.getStatus().getNome());
         }).toList();
 
         return ResponseEntity.status(HttpStatus.OK).body(carrinhosResposta);
