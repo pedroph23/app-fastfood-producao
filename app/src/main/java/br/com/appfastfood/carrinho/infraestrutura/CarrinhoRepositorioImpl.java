@@ -77,14 +77,20 @@ public class CarrinhoRepositorioImpl implements CarrinhoRepositorio {
 
     @Override
     public Carrinho atualizar(Long id, Carrinho carrinho) {
-       List<ProdEnt> prodEnts = carrinho.getProdutoVOS()
-               .stream()
-               .map(produtoVO -> new ProdEnt(produtoVO.getIdProduto(), produtoVO.getQuantidadeProduto()))
-               .toList();
 
-       CarrinhoEntidade carrinhoEntidade = new CarrinhoEntidade(id, prodEnts, carrinho.getCliente().getCliente(), carrinho.getValorTotal());
+       Optional<CarrinhoEntidade> carrinhoOptionalEnt = this.springDataCarrinhoRepository.findById(id);
 
-       if (this.springDataCarrinhoRepository.existsById(id)) {
+       if (!carrinhoOptionalEnt.isEmpty()) {
+
+           CarrinhoEntidade carrinhoEnt = carrinhoOptionalEnt.get();
+
+           List<ProdEnt> prodEnts = carrinho.getProdutoVOS()
+                   .stream()
+                   .map(produtoVO -> new ProdEnt(produtoVO.getIdProduto(), produtoVO.getQuantidadeProduto()))
+                   .toList();
+
+           CarrinhoEntidade carrinhoEntidade = new CarrinhoEntidade(id, prodEnts, carrinho.getCliente().getCliente(), carrinho.getValorTotal(), carrinhoEnt.getStatus());
+
            this.springDataCarrinhoRepository.save(carrinhoEntidade);
            return carrinho;
        }
