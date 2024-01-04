@@ -98,4 +98,13 @@ public class CarrinhoRepositorioImpl implements CarrinhoRepositorio {
         throw new BadRequestException(ExceptionsMessages.ID_NAO_ENCONTRADO.getValue());
     }
 
+    @Override
+    public void fecharCarrinho(Long id) {
+        if(this.springDataCarrinhoRepository.existsById(id)) {
+           CarrinhoEntidade entidade = this.springDataCarrinhoRepository.findById(id).get();
+           entidade.setStatus(StatusCarrinhoEnum.FECHADO.getNome());
+           this.springDataCarrinhoRepository.save(entidade);
+        }
+    }
+
 }

@@ -11,4 +11,6 @@ public interface CarrinhoServico {
     List<Carrinho> listar();
 
     Carrinho atualizar(Long id, CarrinhoRequisicao carrinhoRequisicao);
+
+    void fecharCarrinho(Long id);
 }

@@ -94,4 +94,9 @@ public class CarrinhoServicoImpl implements CarrinhoServico {
         return carrinhoAlterado;
     }
 
+    @Override
+    public void fecharCarrinho(Long id) {
+        this.carrinhoRepositorio.fecharCarrinho(id);
+    }
+
 }

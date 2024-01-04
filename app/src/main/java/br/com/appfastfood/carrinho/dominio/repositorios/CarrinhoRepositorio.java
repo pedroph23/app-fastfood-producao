@@ -16,4 +16,6 @@ public interface CarrinhoRepositorio {
     List<CarrinhoEntidade> listar();
 
     Carrinho atualizar(Long id, Carrinho carrinho);
+
+    void fecharCarrinho(Long id);
 }

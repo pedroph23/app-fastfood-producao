@@ -113,4 +113,18 @@ public class CarrinhoController {
 
         return ResponseEntity.status(HttpStatus.OK).body(carrinhoResposta);
     }
+
+    @PutMapping("/fecharCarrinho/{id}")
+    @Operation(summary = "Fechar Carrinho", description = "Funcionalidade de fechar o carrinho, usando id de carrinho")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Carrinho fechado com sucesso",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ProdutoResposta.class))}),
+            @ApiResponse(responseCode = "400", description = "",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = RequisicaoExcecao.class)))})
+    public ResponseEntity fecharCarrinho(@PathVariable("id") Long id){
+        this.carrinhoServico.fecharCarrinho(id);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
 }
