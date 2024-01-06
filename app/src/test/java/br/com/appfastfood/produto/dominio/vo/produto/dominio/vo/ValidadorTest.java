@@ -1,5 +1,6 @@
-package br.com.appfastfood.produto.dominio.vo;
+package br.com.appfastfood.produto.dominio.vo.produto.dominio.vo;
 
+import br.com.appfastfood.produto.dominio.vo.Validacoes;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;

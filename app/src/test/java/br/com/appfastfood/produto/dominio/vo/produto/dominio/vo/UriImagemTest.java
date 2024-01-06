@@ -1,6 +1,7 @@
-package br.com.appfastfood.produto.dominio.vo;
+package br.com.appfastfood.produto.dominio.vo.produto.dominio.vo;
 
 import br.com.appfastfood.configuracoes.execption.BadRequestException;
+import br.com.appfastfood.produto.dominio.vo.UriImagem;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

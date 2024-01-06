@@ -6,10 +6,10 @@ import br.com.appfastfood.carrinho.dominio.modelos.Cliente;
 import br.com.appfastfood.carrinho.dominio.modelos.enums.StatusCarrinhoEnum;
 import br.com.appfastfood.carrinho.dominio.repositorios.CarrinhoRepositorio;
 import br.com.appfastfood.carrinho.dominio.vo.ProdutoVO;
+import br.com.appfastfood.carrinho.exceptions.ExceptionsMessages;
 import br.com.appfastfood.carrinho.infraestrutura.entidades.CarrinhoEntidade;
 import br.com.appfastfood.carrinho.infraestrutura.entidades.ProdEnt;
 import br.com.appfastfood.configuracoes.execption.BadRequestException;
-import br.com.appfastfood.produto.exceptions.ExceptionsMessages;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -104,6 +104,8 @@ public class CarrinhoRepositorioImpl implements CarrinhoRepositorio {
            CarrinhoEntidade entidade = this.springDataCarrinhoRepository.findById(id).get();
            entidade.setStatus(StatusCarrinhoEnum.FECHADO.getNome());
            this.springDataCarrinhoRepository.save(entidade);
+        } else {
+            throw new BadRequestException(ExceptionsMessages.ID_NAO_ENCONTRADO.getValue());
         }
     }
 

@@ -1,8 +1,10 @@
-package br.com.appfastfood.produto.infraestrutura;
+package br.com.appfastfood.produto.dominio.vo.produto.infraestrutura;
 
 import br.com.appfastfood.configuracoes.execption.BadRequestException;
 import br.com.appfastfood.produto.dominio.modelos.Produto;
 import br.com.appfastfood.produto.dominio.repositorios.ProdutoRepositorio;
+import br.com.appfastfood.produto.infraestrutura.ProdutoRepositorioImpl;
+import br.com.appfastfood.produto.infraestrutura.SpringDataProdutoRepository;
 import br.com.appfastfood.produto.infraestrutura.entidades.ProdutoEntidade;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -59,6 +61,7 @@ public class ProdutoRepositorioImplTest {
         Assertions.assertEquals("http://localhost:8080", produtos.get(1).getUriImagem().getUriImagem());
         Assertions.assertEquals("lanche", produtos.get(1).getCategoria().name());
         Assertions.assertEquals("Descrição do produto 2", produtos.get(1).getDescricao().getDescricao());
+
     }
 
     @Test
@@ -71,5 +74,6 @@ public class ProdutoRepositorioImplTest {
         // Execução do método a ser testado e verificação da exceção
         Assertions.assertThrows(BadRequestException.class,
                 () -> produtoRepositorio.buscarPorCategoria(categoria));
+
     }
 }
