@@ -123,18 +123,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M5</version> <!-- Use a versão atualizada do maven-surefire-plugin -->
-				<configuration>
-					<systemPropertyVariables>
-						<spring.data.mongodb.uri>mongodb://localhost:27017/mydatabase</spring.data.mongodb.uri>
-						<spring.data.mongodb.port>27017</spring.data.mongodb.port>
-						<spring.data.mongodb.host>localhost</spring.data.mongodb.host>
-						<spring.data.mongodb.username>test-username</spring.data.mongodb.username>
-						<spring.data.mongodb.password>test-password</spring.data.mongodb.password>
-						<spring.data.mongodb.database>test-database</spring.data.mongodb.database>
-						<spring.data.mongodb.ssl.trust-store>global.pem</spring.data.mongodb.ssl.trust-store>
-						<spring.datasource.hikari.validation-timeout>5000</spring.datasource.hikari.validation-timeout>
-					</systemPropertyVariables>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
