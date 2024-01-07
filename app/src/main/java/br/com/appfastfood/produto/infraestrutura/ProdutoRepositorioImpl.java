@@ -41,6 +41,7 @@ public class ProdutoRepositorioImpl implements ProdutoRepositorio {
     @Override
     public Produto atualizar(Long id, Produto produto) {
             ProdutoEntidade produtoSalvo = new ProdutoEntidade(
+                id,
                 produto.getNome().getNome(),
                 produto.getPreco().getPreco(),
                 produto.getUriImagem().getUriImagem(),
