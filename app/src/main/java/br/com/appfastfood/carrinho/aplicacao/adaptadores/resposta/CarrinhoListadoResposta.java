@@ -20,10 +20,10 @@ public class CarrinhoListadoResposta {
     @JsonProperty("produtos")
     private List<ProdutosReq> produtos;
 
-    @JsonProperty("id_cliente")
+    @JsonProperty("idCliente")
     private String idCliente;
 
-    @JsonProperty("valor_total")
+    @JsonProperty("valorTotal")
     private Double valorTotal;
 
 

@@ -17,7 +17,6 @@ public class CarrinhoRequisicao {
     @JsonProperty("produtos")
     private List<ProdutosReq> produtos;
 
-    @JsonProperty("id_cliente")
     private String idCliente;
 
     public CarrinhoRequisicao(List<ProdutosReq> produtos, String idCliente){

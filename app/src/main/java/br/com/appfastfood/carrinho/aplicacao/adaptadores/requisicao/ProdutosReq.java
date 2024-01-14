@@ -14,10 +14,10 @@ import java.io.Serializable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProdutosReq implements Serializable {
 
-    @JsonProperty("id_produto")
+    @JsonProperty("idProduto")
     private String idProduto;
 
-    @JsonProperty("quantidade_produto")
+    @JsonProperty("quantidadeProduto")
     private String quantidadeProduto;
 
 

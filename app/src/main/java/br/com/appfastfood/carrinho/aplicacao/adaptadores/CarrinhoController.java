@@ -42,7 +42,7 @@ public class CarrinhoController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Carrinho cadastrado com sucesso",
                     content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = ProdutoResposta.class))}),
+                            schema = @Schema(implementation = CarrinhoResposta.class))}),
             @ApiResponse(responseCode = "400", description = "",
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = RequisicaoExcecao.class)))})
@@ -53,7 +53,7 @@ public class CarrinhoController {
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "Remover Produto", description = "Funcionalidade de remover um carrinho passando o parametro 'id' do carrinho")
+    @Operation(summary = "Remover Carrinho", description = "Funcionalidade de remover um carrinho passando o parametro 'id' do carrinho")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Carrinho removido com suceso",
                     content = {@Content()}),

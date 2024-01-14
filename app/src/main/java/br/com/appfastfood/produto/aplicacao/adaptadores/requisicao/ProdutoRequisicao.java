@@ -4,8 +4,11 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
+
 @Builder()
 @Getter
+@Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProdutoRequisicao {
 
@@ -15,7 +18,7 @@ public class ProdutoRequisicao {
     @JsonProperty("preco")
     private Double preco;
 
-    @JsonProperty("uri_imagem")
+    @JsonProperty("uriImagem")
     private String uriImagem;
 
     @JsonProperty("categoria")

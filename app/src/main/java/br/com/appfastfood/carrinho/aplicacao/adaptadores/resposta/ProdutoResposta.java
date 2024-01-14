@@ -17,7 +17,7 @@ public class ProdutoResposta {
     @JsonProperty("preco")
     private Double preco;
 
-    @JsonProperty("uri_imagem")
+    @JsonProperty("uriImagem")
     private String uriImagem;
 
     @JsonProperty("categoria")
