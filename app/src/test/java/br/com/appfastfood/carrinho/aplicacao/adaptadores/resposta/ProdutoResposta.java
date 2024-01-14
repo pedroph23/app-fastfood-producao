@@ -48,7 +48,7 @@ class ProdutoRespostaTest {
                 "  \"id\" : \"1\",\n" +
                 "  \"nome\" : \"ProdutoTeste\",\n" +
                 "  \"preco\" : 10.0,\n" +
-                "  \"uri_imagem\" : \"imagem.jpg\",\n" +
+                "  \"uriImagem\" : \"imagem.jpg\",\n" +
                 "  \"categoria\" : \"CategoriaTeste\",\n" +
                 "  \"descricao\" : \"Descrição do produto\"\n" +
                 "}";
