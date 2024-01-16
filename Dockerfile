@@ -1,7 +1,7 @@
 FROM amazoncorretto:17-alpine-jdk
 
 WORKDIR /code
-COPY ./app/target /code/app
+COPY ./app /code/app
 
 RUN wget https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem
 RUN mv global-bundle.pem app/global-bundle.pem
