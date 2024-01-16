@@ -2,7 +2,6 @@ package br.com.appfastfood.carrinho.dominio.modelos;
 
 import br.com.appfastfood.carrinho.dominio.modelos.enums.StatusCarrinhoEnum;
 import br.com.appfastfood.carrinho.dominio.vo.ProdutoVO;
-import ch.qos.logback.core.net.server.Client;
 
 import java.util.List;
 

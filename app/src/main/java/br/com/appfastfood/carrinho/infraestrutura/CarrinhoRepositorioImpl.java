@@ -25,12 +25,9 @@ public class CarrinhoRepositorioImpl implements CarrinhoRepositorio {
 
     @Override
     public void criar(Carrinho carrinho) {
-        Double valorTotal = 0D;
         List<ProdEnt> produtosEntidade = new ArrayList<>();
 
-        carrinho.getProdutoVOS().forEach(produto -> {
-            produtosEntidade.add(new ProdEnt(produto.getIdProduto(), produto.getQuantidadeProduto()));
-        });
+        carrinho.getProdutoVOS().forEach(produto -> produtosEntidade.add(new ProdEnt(produto.getIdProduto(), produto.getQuantidadeProduto())));
 
         CarrinhoEntidade carrinhoEntidade = new CarrinhoEntidade(produtosEntidade, carrinho.getCliente().getCliente(), carrinho.getValorTotal(), StatusCarrinhoEnum.retornaNomeEnum(carrinho.getStatus()));
 
@@ -101,9 +98,15 @@ public class CarrinhoRepositorioImpl implements CarrinhoRepositorio {
     @Override
     public void fecharCarrinho(Long id) {
         if(this.springDataCarrinhoRepository.existsById(id)) {
-           CarrinhoEntidade entidade = this.springDataCarrinhoRepository.findById(id).get();
-           entidade.setStatus(StatusCarrinhoEnum.FECHADO.getNome());
-           this.springDataCarrinhoRepository.save(entidade);
+           Optional<CarrinhoEntidade> optional = this.springDataCarrinhoRepository.findById(id);
+           if(optional.isPresent()) {
+               CarrinhoEntidade entidade = optional.get();
+               entidade.setStatus(StatusCarrinhoEnum.FECHADO.getNome());
+               this.springDataCarrinhoRepository.save(entidade);
+           }
+           else {
+               throw new BadRequestException(ExceptionsMessages.ID_NAO_ENCONTRADO.getValue());
+           }
         } else {
             throw new BadRequestException(ExceptionsMessages.ID_NAO_ENCONTRADO.getValue());
         }

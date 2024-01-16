@@ -7,9 +7,7 @@ import br.com.appfastfood.carrinho.aplicacao.adaptadores.resposta.CarrinhoListad
 import br.com.appfastfood.carrinho.aplicacao.adaptadores.resposta.CarrinhoResposta;
 import br.com.appfastfood.carrinho.aplicacao.adaptadores.resposta.ProdutoResposta;
 import br.com.appfastfood.carrinho.dominio.modelos.Carrinho;
-import br.com.appfastfood.carrinho.dominio.vo.ProdutoVO;
-import br.com.appfastfood.carrinho.infraestrutura.entidades.CarrinhoEntidade;
-import br.com.appfastfood.carrinho.infraestrutura.entidades.ProdEnt;
+
 import br.com.appfastfood.carrinho.usecase.portas.CarrinhoServico;
 import br.com.appfastfood.configuracoes.logs.Log;
 import io.swagger.v3.oas.annotations.Operation;
