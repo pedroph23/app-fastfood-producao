@@ -8,8 +8,6 @@ import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.time.LocalDateTime;
-import java.util.UUID;
 
 public abstract class ProdutoHelper extends AbstractReader {
 

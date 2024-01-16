@@ -30,10 +30,17 @@ public class ProdutoRespostaTest {
                 .descricao(descricao)
                 .build();
 
+        ProdutoResposta resposta = new ProdutoResposta("0", nome, precoMock, uriImagem, categoria, descricao);
+
         assertEquals(nome, produtoRequisicao.getNome());
         assertEquals(precoMock, produtoRequisicao.getPreco());
         assertEquals(uriImagem, produtoRequisicao.getUriImagem());
         assertEquals(categoria, produtoRequisicao.getCategoria());
         assertEquals(descricao, produtoRequisicao.getDescricao());
+        assertEquals(nome, resposta.getNome());
+        assertEquals(precoMock, resposta.getPreco());
+        assertEquals(uriImagem, resposta.getUriImagem());
+        assertEquals(categoria, resposta.getCategoria());
+        assertEquals(descricao, resposta.getDescricao());
     }
 }
