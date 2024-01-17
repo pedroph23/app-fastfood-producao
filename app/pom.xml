@@ -166,6 +166,8 @@
 				<configuration>
 					<excludes>
 						<exclude>**/*Runner*</exclude>
+						<exclude>**/*Configuration*</exclude>
+						<exclude>**/*Log*</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
