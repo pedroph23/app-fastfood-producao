@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: appfastfood-deployment
+  name: appfastfood-producao-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: appfastfood
+      app: appfastfood-producao
   template:
     metadata:
       labels:
-        app: appfastfood
+        app: appfastfood-producao
     spec:
       containers:
-        - name: appfastfood
-          image: caikemury/appfastfood:latest
+        - name: appfastfood-producao
+          image: caikemury/app-fastfood-producao.jar:latest
           ports:
             - containerPort: 8080
           envFrom:
             - configMapRef:
-                name: appfastfood-configmap
+                name: appfastfood-producao-configmap
             - secretRef:
                 name: app-secret
           readinessProbe:
