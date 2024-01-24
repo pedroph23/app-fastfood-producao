@@ -137,7 +137,7 @@ jobs:
 
       - name: Deploy to EKS
         run: |
-          aws eks --region us-east-1 update-kubeconfig --name appfastfood-cluster
+          aws eks --region us-east-1 update-kubeconfig --name appfastfood-cluster-teste
           kubectl apply -f infra
           kubectl get nodes
           kubectl get pods
