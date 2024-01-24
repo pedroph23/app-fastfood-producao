@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: appfastfood-producao-configmap
 data:
-  POSTGRES_HOST: "terraform-20240117020708422500000001.cvyp8qjfx0ke.us-east-1.rds.amazonaws.com"
+  POSTGRES_HOST: "terraform-20240124234005652900000001.c4bgv5fkmppp.us-east-1.rds.amazonaws.com"
   POSTGRES_DATABASE: "fasfoodproducaodb"
   JAVA_TOOL_OPTIONS: "-agentlib:jdwp=transport=dt_socket,address=*:5005,server=y,suspend=n"
