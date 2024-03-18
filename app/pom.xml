@@ -15,11 +15,27 @@
 	<description>FastFood Application</description>
 	<properties>
 		<java.version>17</java.version>
+		<maven.compiler.release>17</maven.compiler.release>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.organization>pedroph23</sonar.organization>
         <sonar.projectKey>pedroph23_app-fastfood-producao</sonar.projectKey>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>io.awspring.cloud</groupId>
+			<artifactId>spring-cloud-aws-sns</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.awspring.cloud</groupId>
+			<artifactId>spring-cloud-aws-parameter-store</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.awspring.cloud</groupId>
+			<artifactId>spring-cloud-aws-messaging</artifactId>
+			<version>2.4.4</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -46,10 +62,14 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<scope>test</scope>
-			<!-- <scope>runtime</scope> -->
+			<!-- <scope>test</scope> -->
+			<scope>runtime</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.amqp</groupId>
+			<artifactId>spring-rabbit</artifactId>
+			<version>3.1.2</version>
+		</dependency>
 		<dependency>
 		    <groupId>org.postgresql</groupId>
 		    <artifactId>postgresql</artifactId>
@@ -97,11 +117,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
 
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
@@ -124,7 +139,12 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<version>4.0.1</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.0</version>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>

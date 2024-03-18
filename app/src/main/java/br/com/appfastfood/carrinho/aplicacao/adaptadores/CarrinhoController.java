@@ -1,6 +1,7 @@
 package br.com.appfastfood.carrinho.aplicacao.adaptadores;
 
 import br.com.appfastfood.carrinho.aplicacao.adaptadores.requisicao.CarrinhoRequisicao;
+import br.com.appfastfood.carrinho.aplicacao.adaptadores.requisicao.MensagemSNS;
 import br.com.appfastfood.carrinho.aplicacao.adaptadores.requisicao.ProdutosReq;
 import br.com.appfastfood.carrinho.aplicacao.adaptadores.requisicao.RequisicaoExcecao;
 import br.com.appfastfood.carrinho.aplicacao.adaptadores.resposta.CarrinhoListadoResposta;
@@ -10,6 +11,10 @@ import br.com.appfastfood.carrinho.dominio.modelos.Carrinho;
 
 import br.com.appfastfood.carrinho.usecase.portas.CarrinhoServico;
 import br.com.appfastfood.configuracoes.logs.Log;
+import com.amazonaws.services.sns.AmazonSNS;
+import com.amazonaws.services.sns.AmazonSNSClientBuilder;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -20,6 +25,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.List;
 
 @RestController
@@ -29,10 +39,12 @@ public class CarrinhoController {
 
     private CarrinhoServico carrinhoServico;
     private Log logger;
+    private final AmazonSNS amazonSNS;
 
-    public CarrinhoController(CarrinhoServico carrinhoServico, Log logger) {
+    public CarrinhoController(CarrinhoServico carrinhoServico, Log logger, AmazonSNS amazonSNS) {
         this.carrinhoServico = carrinhoServico;
         this.logger = logger;
+        this.amazonSNS = amazonSNS;
     }
 
     @PostMapping
