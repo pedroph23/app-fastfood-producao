@@ -112,7 +112,7 @@ public class CarrinhoServicoImpl implements CarrinhoServico {
         try {
             CarrinhoFecharIN in = objectMapper.readValue(mensagem, CarrinhoFecharIN.class);
             this.carrinhoRepositorio.fecharCarrinho(Long.valueOf(in.getIdPedido()));
-            this.topicHandler.publish(mensagem, "arn:aws:sns:us-east-1:000000000000:carrinho-fechado");
+            this.topicHandler.publish(mensagem, "arn:aws:sns:us-east-1:101478099523:carrinho-fechado");
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
