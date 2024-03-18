@@ -6,4 +6,4 @@ COPY ./app /code/app
 RUN wget https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem
 RUN mv global-bundle.pem app/global-bundle.pem
 
-CMD ["sh", "-c", "java -jar /code/app/target/app-fastfood-0.0.1.jar"]
+CMD ["sh", "-c", "java -jar /code/app/app-fastfood-producao.jar"]
